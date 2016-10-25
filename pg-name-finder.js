@@ -27,7 +27,8 @@ function findName (input) {
     console.log("Searching....");
     console.log(`Found 1 person by the name '${input}':`);
     var result = result.rows[0];
-    console.log(`- ${result.id}: ${result.first_name} ${result.last_name}, born ${result.birthdate.toDateString()}`); //output: 1
+    console.log(`- ${result.id}: ${result.first_name} ${result.last_name},
+      born ${result.birthdate.toDateString()}`);
     client.end();
   });
 }
