@@ -24,10 +24,13 @@ function findName (input) {
     if (err) {
       return console.error("error running query", err);
     }
-    console.log("Searching....");
-    console.log(`Found 1 person by the name '${input}':`);
-    var result = result.rows[0];
-    console.log(`- ${result.id}: ${result.first_name} ${result.last_name}, born ${result.birthdate.toDateString()}`);
+    output(result);
     client.end();
   });
+}
+function output (result) {
+  console.log("Searching....");
+  console.log(`Found 1 person by the name '${input}':`);
+  var result = result.rows[0];
+  console.log(`- ${result.id}: ${result.first_name} ${result.last_name}, born ${result.birthdate.toDateString()}`);
 }

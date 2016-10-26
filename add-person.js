@@ -14,14 +14,15 @@ const knex = require('knex')({
     database : settings.database
   }
 });
-console.log(birthDate);
 
 knex('famous_people').insert({
   first_name: firstName,
   last_name: lastName,
   birthdate: birthDate
-}).asCallback();
-knex.select().from('famous_people').asCallback(function (err, result) {
+}).asCallback().finally(function(){
+ knex.select().from('famous_people').asCallback(function (err, result) {
   if (err) { throw err;}
   console.log(result);
-});
+ });
+ knex.destroy();
+})

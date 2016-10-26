@@ -25,4 +25,6 @@ knex.select().from('famous_people').where(function (){
   console.log(`Found 1 person by the name '${input}':`);
   var result = result[0];
   console.log(`- ${result.id}: ${result.first_name} ${result.last_name}, born ${result.birthdate.toDateString()}`);
+}).finally(function(){
+  knex.destroy();
 });
